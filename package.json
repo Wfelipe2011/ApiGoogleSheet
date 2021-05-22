@@ -1,0 +1,20 @@
+{
+  "name": "apigooglesheet",
+  "version": "1.0.0",
+  "description": "Uma Api que acessa dados de Planilhas Google",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wfelipe2011/ApiGoogleSheet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wfelipe2011/ApiGoogleSheet/issues"
+  },
+  "homepage": "https://github.com/Wfelipe2011/ApiGoogleSheet#readme"
+}
