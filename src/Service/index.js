@@ -7,12 +7,17 @@ const { promisify } = require('util');
 
 // Modulo WhatsApp
 
-wbm.start().then(async () => {
-    const phones = ['5535988841854', '35988841854', '5535988841854'];
-    const message = 'Good Morning.';
-    await wbm.send(phones, message);
-    await wbm.end();
-}).catch(err => console.log(err));
+function WhatsOneMessage(numero, text){
+
+    return wbm.start().then(async () => {
+        const phones = [numero]
+        const message = text;
+        await wbm.send(phones, message);
+        await wbm.end();
+    }).catch(err => console.log(err));
+}
+
+//WhatsOneMessage(5515981785706, 'Hello World')
 
 
 // Module GoogleSheet
@@ -34,6 +39,7 @@ const docId = '1gOcCyNosINPz41VPiLG95Tkba67bQtf9OJcBNg2gjbw'
 
 
  const accessSheet = async() => {
+    WhatsOneMessage('5515981785706', 'Hello World')
     let Date = {}
     const doc = new GoogleSpreadsheet(docId);
     await promisify(doc.useServiceAccountAuth)(credentials);
