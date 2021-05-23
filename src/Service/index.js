@@ -3,11 +3,9 @@ const wbm = require('wbm');
 const credentials = require('../../credentials.json');
 const { promisify } = require('util');
 
-
-
 // Modulo WhatsApp
 
-function WhatsOneMessage(numero, text){
+function WhatsOneMessage(numero, text) {
 
     return wbm.start().then(async () => {
         const phones = [numero]
@@ -18,7 +16,6 @@ function WhatsOneMessage(numero, text){
 }
 
 //WhatsOneMessage(5515981785706, 'Hello World')
-
 
 // Module GoogleSheet
 
@@ -35,24 +32,21 @@ const docId = '1gOcCyNosINPz41VPiLG95Tkba67bQtf9OJcBNg2gjbw'
 // })
 // Promisificar 
 
-
-
-
- const accessSheet = async() => {
-    WhatsOneMessage('5515981785706', 'Hello World')
+const accessSheet = async () => {
+    WhatsOneMessage('5512981829844', 'Hello World')
     let Date = {}
     const doc = new GoogleSpreadsheet(docId);
     await promisify(doc.useServiceAccountAuth)(credentials);
     const info = await promisify(doc.getInfo)()
     const worksheet = info.worksheets[0];
     const rows = await promisify(worksheet.getRows)({})
-    
+
     //console.log(rows)
     // get
-     rows.forEach((row, index) => {
-          Date[index] = { nome: row.nome}
-      })
-      return Date;
+    rows.forEach((row, index) => {
+        Date[index] = { nome: row.nome }
+    })
+    return Date;
     //set
     // await promisify(worksheet.addRow)({
     //     nome: 'Felipe',
@@ -68,19 +62,18 @@ const docId = '1gOcCyNosINPz41VPiLG95Tkba67bQtf9OJcBNg2gjbw'
     // })
 }
 
-  const accessSheetPost = async(valor) => {
-    
+const accessSheetPost = async (valor) => {
+
     const doc = new GoogleSpreadsheet(docId);
     await promisify(doc.useServiceAccountAuth)(credentials);
     const info = await promisify(doc.getInfo)()
     const worksheet = info.worksheets[0];
-    //const rows = await promisify(worksheet.getRows)({})
-    
-     
+    //const rows = await promisify(worksheet.getRows)({})  
+
     //set
-     await promisify(worksheet.addRow)({
-         nome: valor.nome
-     })
+    await promisify(worksheet.addRow)({
+        nome: valor.nome
+    })
     // filtrar dados 
     // const rows = await promisify(worksheet.getRows)({
     //     query: 'nome = "Felipe"'
@@ -91,4 +84,4 @@ const docId = '1gOcCyNosINPz41VPiLG95Tkba67bQtf9OJcBNg2gjbw'
     // })
 }
 
-module.exports = {accessSheet, accessSheetPost}
+module.exports = { accessSheet, accessSheetPost }
