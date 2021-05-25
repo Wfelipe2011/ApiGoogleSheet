@@ -1,7 +1,8 @@
-var express = require('express');
-var app = express();
+import express from 'express';
 
-app.use('/', require('./src/routes/routes.js'))
+const app = express();
+
+app.use('/', require('./routes/routes.js'))
 app.listen(3000, function () {
     console.log('App de Exemplo escutando na porta 3000!');
 });
